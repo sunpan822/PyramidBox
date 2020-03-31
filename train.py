@@ -17,7 +17,7 @@ import time
 from layers import *
 
 
-os.environ["CUDA_VISIBLE_DEVICES"]="2,3"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
@@ -120,7 +120,7 @@ def train():
     epoch = 0
     print('Loading Dataset...')
 
-    dataset = Detection(args.annoPath, PyramidAugmentation(ssd_dim, means), AnnotationTransform())
+    dataset = Detection(args.anno_path, PyramidAugmentation(ssd_dim, means), AnnotationTransform())
 
     epoch_size = len(dataset) // args.batch_size
     print('Training SSD on', dataset.name)

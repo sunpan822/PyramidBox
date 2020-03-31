@@ -121,7 +121,7 @@ class Detection(data.Dataset):
         files = os.listdir(self.anno_path)
         anno_file = [file for file in files if '.xml' in file]
         for file in anno_file:
-            filename, annotation = readXml(file)
+            filename, annotation = readXml(os.path.join(self.anno_path,file))
             self.ids.append(filename)
             self.annotation.append(annotation)
 
@@ -137,7 +137,7 @@ class Detection(data.Dataset):
         img_id = self.ids[index]
 
         target = self.annotation[index]
-        img = cv2.imread(self.ids[index])
+        img = cv2.imread(os.path.join(self.anno_path,self.ids[index]))
         height, width, channels = img.shape
 
         if self.target_transform is not None:
