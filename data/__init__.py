@@ -1,4 +1,4 @@
-from .widerface import Detection, AnnotationTransform, detection_collate
+from .mask_det import Detection, AnnotationTransform, detection_collate
 from .config import *
 import cv2
 import numpy as np
